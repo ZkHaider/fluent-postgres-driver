@@ -59,6 +59,11 @@ extension PostgreSQLDatabase: QuerySupporting {
                     case ._null: return
                     default: break
                     }
+                case ._bind:
+                    if (row.key == "id") {
+                        // Modify this and check to see if this is an autoincrement
+                        return
+                    }
                 default: break
                 }
                 insert.columns.append(.column(nil, .identifier(row.key)))
